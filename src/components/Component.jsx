@@ -2,21 +2,30 @@ import React from 'react'
 import TitleComponent from './TitleComponent'
 import SugangInfo from './SugangInfo'
 import styled from 'styled-components';
+import { Grid, Item } from 'semantic-ui-react';
 
 const Container = styled.div`
     display : flex;
     flex-direction : row;
-    height: 10em;
+    height: fit-content;
     gap: 5em;
+    
 `
 
 const Component = () => {
   return (
-    <Container>
-        <TitleComponent />
+    <Grid columns="2">
+      <Grid.Row stretched>
+        <Grid.Column width={10}>
+          <TitleComponent />
+        </Grid.Column>
 
-        <SugangInfo />
-    </Container>
+        <Grid.Column width={6}>
+          <SugangInfo />
+        </Grid.Column>
+
+      </Grid.Row>
+    </Grid>
   )
 }
 

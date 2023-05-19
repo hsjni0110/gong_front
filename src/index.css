@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+@font-face {
+	font-family: "SEBANG_Gothic_Bold";
+	src: url(./assets/font/SEBANG\ Gothic\ Bold.ttf);
+}
+
+:root {
+	--font-sebangBold: "SEBANG_Gothic_Bold";
+}
