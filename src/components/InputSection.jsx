@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import Option from './Option';
-import { departmentInfo, divisionInfo, gradeInfo, pointInfo, yearInfo } from '../data/categoryInfo';
+import { departmentInfo, divisionInfo, gradeInfo, pointInfo, yearInfo, semesterInfo } from '../data/categoryInfo';
 import { Button, Input, Menu } from 'semantic-ui-react';
 import { Icon } from 'semantic-ui-react';
+import axios from 'axios';
 
 
 const Options = styled.div`
@@ -38,21 +39,67 @@ const Info = styled.div`
   background-color: white;
 `;
 const InputSection = () => {
+
+  const [ department, setDepartment ] = useState("전체");
+  const [ grade, setGrade ] = useState("전체");
+  const [ division, setDivision ] = useState("전체");
+  const [ point, setPoint ] = useState("전체");
+  const [ year, setYear ] = useState("전체");
+  const [ semester, setSemester ] = useState("전체");
+
+  const [ inputData, setInputData ] = useState("전체");
+
+  const handleSearchBar = (e) => {
+    e.preventDefault();
+    setInputData(e.target.value);
+  };
+  
+  // 데이터 전송
+  const onSubmitData = async (e) => {
+    e.preventDefault();
+    let url = "http://"+process.env.REACT_APP_SERVER_HOST+":"+process.env.REACT_APP_SERVER_PORT+"/api/subject/subjects";
+    console.log(url)
+
+    try {
+      const data = await axios.post(url,{
+      "year": year,
+      "semester" : semester,
+      "name": inputData,
+      "department": department,
+      "grade" : grade,
+      "division" : division,
+      "point" : point
+      })
+      console.log(data);
+    } catch(error) {
+      console.log(error);
+    }
+  };
+
+    useEffect(() => {
+     setDepartment("전체");
+     setGrade("전체")
+     setDivision("전체")
+     setPoint("전체");
+    },[])
+
+
   return (
     <div style={{ width: "100%", height: "200px", backgroundColor: "#F7F8FA", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", paddingTop: "1em", }}>
       <div style={{ display: "flex", gap: "2em"}}>
-        <Option optionData={departmentInfo} />
-        <Option optionData={gradeInfo} />
-        <Option optionData={divisionInfo} />
-        <Option optionData={pointInfo} />
-        <Option optionData={yearInfo} />
-
+        <Option optionData={departmentInfo} setOption={setDepartment} />
+        <Option optionData={gradeInfo} setOption={setGrade} />
+        <Option optionData={divisionInfo} setOption={setDivision}/>
+        <Option optionData={pointInfo} setOption={setPoint}/>
+        <Option optionData={yearInfo} setOption={setYear}/>
+        <Option optionData={semesterInfo} setOption={setSemester}/>
+        
       </div>
 
       <SearchBar>
         <Input size="massive" type='text' placeholder='과목명...' action>
-          <input />
-          <Button type='submit'>Search</Button>
+          <input onChange={handleSearchBar}/>
+          <Button type='submit' onClick={onSubmitData}>Search</Button>
         </Input>
         <Icon name='question circle' size='huge' color='grey' />
       </SearchBar>

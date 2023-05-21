@@ -16,7 +16,14 @@ const SugangInfo = () => {
       chart: {
         height: 350,
         type: 'bar',
+        toolbar: {
+          show: false
+        }
       },
+      grid: {
+        show: false
+      },
+      
       plotOptions: {
         bar: {
           borderRadius: 10,

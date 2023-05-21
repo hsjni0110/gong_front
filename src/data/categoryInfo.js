@@ -22,3 +22,7 @@ export let divisionInfo = [
 export let pointInfo = [
   "전체", "1", "2", "3"
 ]
+
+export let semesterInfo = [
+  "1", "2"
+]
