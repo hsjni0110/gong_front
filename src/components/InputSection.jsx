@@ -48,10 +48,14 @@ const InputSection = () => {
   const [ grade, setGrade ] = useState("전체");
   const [ division, setDivision ] = useState("전체");
   const [ point, setPoint ] = useState("전체");
-  const [ year, setYear ] = useState("2022");
-  const [ semester, setSemester ] = useState("1");
+  const [ year, setYear ] = useState("");
+  const [ semester, setSemester ] = useState("");
 
   const [ inputData, setInputData ] = useState("");
+  const [ validCheck, setVaildCheck ] = useState(false);
+
+
+
   const setSubjectData = useSetRecoilState(subjectState);
   const setLoading = useSetRecoilState(loadingState);
 
@@ -62,6 +66,15 @@ const InputSection = () => {
   
   // 데이터 전송
   const onSubmitData = async (e) => {
+
+    if (year == "" || semester == "") {
+      setVaildCheck(false);
+    }
+
+    if(validCheck) {
+    
+    }
+
     setLoading(true)
 
     e.preventDefault();
@@ -77,7 +90,7 @@ const InputSection = () => {
       "division" : division,
       "point" : point
       })
-      console.log(data.data);
+ 
 
       setSubjectData(data.data);
       setLoading(false);
@@ -91,8 +104,6 @@ const InputSection = () => {
      setGrade("전체")
      setDivision("전체")
      setPoint("전체");
-     setYear("2022");
-     setSemester("1");
     },[])
 
 
@@ -113,7 +124,7 @@ const InputSection = () => {
           <input onChange={handleSearchBar}/>
           <Button type='submit' onClick={onSubmitData}>Search</Button>
         </Input>
-        <Icon name='question circle' size='huge' color='grey' />
+       <Icon bordered inverted color='blue' name='exclamation' size='big' style={{ borderRadius: "10px"}}/> 
       </SearchBar>
     </div>
   )
