@@ -1,22 +1,22 @@
-import React from 'react'
-import { Card, Divider, Grid, Icon, Image, Item, Segment, Statistic } from 'semantic-ui-react'
+import React, { useEffect, useState } from 'react'
+import { Card, Divider, Grid, Icon, Image, Item, Label, Segment, Statistic } from 'semantic-ui-react'
 
-const TitleComponent = () => {
+const TitleComponent = (component) => {
   return (
 
     <Card style={{ height: "100%", width: "100%" }}>
       <Card.Content textAlign='center' style={{ fontSize: "1.5em" }}>
-        <Card.Header>컴퓨터 프로그래밍</Card.Header>
+        <Card.Header>{component.component.OPEN_SBJT_NM} - {component.component.OPEN_DCLSS} 분반</Card.Header>
       </Card.Content>
 
       <Card.Content>
         <Grid columns={2} divided>
           <Grid.Column>
             <Item name="write" />
-            <p>2022 / 1학기</p>
+            <p>{component.component.OPEN_YR} / {component.component.SHTM}</p>
           </Grid.Column>
           <Grid.Column>
-            <p>3/2/2 상대평가</p>
+            <p>{component.component.PNT} / {component.component.THEO_TMCNT} / {component.component.PRAC_TMCNT}</p>
           </Grid.Column>
         </Grid>
       </Card.Content>
@@ -24,10 +24,10 @@ const TitleComponent = () => {
         <Grid columns={2} divided>
           <Grid.Column>
             <Item name="write" />
-            <p>컴퓨터 융합 학부</p>
+            <p>{component.component.DEGR_NM_SUST}</p>
           </Grid.Column>
           <Grid.Column>
-            <p>전공(핵심)</p>
+            <p>{component.component.CPTN_DIV_NM}</p>
           </Grid.Column>
         </Grid>
       </Card.Content>
@@ -39,7 +39,7 @@ const TitleComponent = () => {
         </Grid.Column>
         
         <Grid.Column>
-          <Statistic label='Like' size='mini' value='5,550' />
+          <Statistic label='Like' size='mini' value={component.component.likeCount} />
         </Grid.Column>
         </Grid>
 

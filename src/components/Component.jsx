@@ -12,16 +12,17 @@ const Container = styled.div`
     
 `
 
-const Component = () => {
+const Component = (component) => {
+  
   return (
     <Grid columns="2">
       <Grid.Row stretched>
         <Grid.Column width={10}>
-          <TitleComponent />
+          <TitleComponent component={component.component}/>
         </Grid.Column>
-
+  
         <Grid.Column width={6}>
-          <SugangInfo />
+          <SugangInfo component={component.component} />
         </Grid.Column>
 
       </Grid.Row>
