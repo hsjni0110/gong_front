@@ -21,12 +21,15 @@ export const ComponentSection = () => {
   const data = useRecoilValue(subjectState);
   const [activePage, setActivePage] = useState(1);
   const [displayedData, setDisplayedData] = useState(data.slice(0, itemsPerPage));
+  const [sortedData, setSortedData] = useState([]);
 
-  console.log(data);
+  
 
   useEffect(() => {
+    
     setDisplayedData(data.slice(0, itemsPerPage))
   },[data])
+  console.log(sortedData)
 
 
 

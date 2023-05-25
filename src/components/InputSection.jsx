@@ -54,13 +54,8 @@ const InputSection = () => {
   // 데이터 전송
   const onSubmitData = async (e) => {
 
-    if (year == "" || semester == "") {
-      setVaildCheck(false);
-    } else {
-      setVaildCheck(true);
-    }
 
-    if (validCheck) {
+
       setLoading(true)
 
       e.preventDefault();
@@ -84,7 +79,6 @@ const InputSection = () => {
         console.log(error);
       }
 
-    }
   };
 
   useEffect(() => {

@@ -1,7 +1,45 @@
 import React, { useEffect, useState } from 'react'
 import { Card, Divider, Grid, Icon, Image, Item, Label, Segment, Statistic } from 'semantic-ui-react'
+import axios from 'axios'
 
 const TitleComponent = (component) => {
+
+  const [year, setYear] = useState("");
+  const [semester, setSemester] = useState("");
+  const [name, setName] = useState("");
+  const [dclass, setDclass] = useState("");
+  const [likes, setLikes] = useState("");
+
+  useEffect(() => {
+      setYear(component.component.OPEN_YR);
+      setSemester(component.component.SHTM);
+      setName(component.component.OPEN_SBJT_NM);
+      setDclass(component.component.OPEN_DCLSS);
+      setLikes(component.component.likeCount);
+    },[component])
+
+
+  const onClickLike = async () => {
+    let url = "http://" + process.env.REACT_APP_SERVER_HOST + ":" + process.env.REACT_APP_SERVER_PORT + "/api/subject/likes";
+    
+    var like = (likes+1).toString()
+
+    try {
+      let newLike = await axios.post(url, {
+        "year": year,
+        "semester": semester,
+        "name": name,
+        "dclass" : dclass,
+        "likes": like
+      })
+
+      setLikes(() => likes+1);
+
+    } catch (error){
+      setLikes(() => likes-1);
+      console.log(error);
+    }
+  }
   return (
 
     <Card style={{ height: "100%", width: "100%" }}>
@@ -35,11 +73,13 @@ const TitleComponent = (component) => {
       <Card.Content>
         <Grid columns={2} divided>
         <Grid.Column>
-          <Icon name='like' size='big'/>
+          <div onClick={onClickLike}>
+          <Icon name='like' size='big' />
+          </div>
         </Grid.Column>
         
         <Grid.Column>
-          <Statistic label='Like' size='mini' value={component.component.likeCount} />
+          <Statistic label='Like' size='mini' value={likes} />
         </Grid.Column>
         </Grid>
 
