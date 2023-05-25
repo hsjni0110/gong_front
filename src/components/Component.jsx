@@ -13,7 +13,9 @@ const Container = styled.div`
 
 const Component = (component) => {
   
+
   return (
+  
     <Grid columns="2">
       <Grid.Row stretched>
         <Grid.Column width={10}>
