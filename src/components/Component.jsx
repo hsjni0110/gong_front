@@ -9,7 +9,6 @@ const Container = styled.div`
     flex-direction : row;
     height: fit-content;
     gap: 5em;
-    
 `
 
 const Component = (component) => {

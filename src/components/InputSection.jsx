@@ -7,10 +7,7 @@ import { Button, Input, Menu } from 'semantic-ui-react';
 import { Icon } from 'semantic-ui-react';
 import axios from 'axios';
 import { useSetRecoilState, useRecoilState } from 'recoil';
-import { subjectState } from '../state/state';
-import { loadingState } from '../state/state';
-import { modalState } from '../state/state';
-
+import { subjectState, loadingState, modalState } from '../state/state';
 
 const Options = styled.div`
   width: auto;
