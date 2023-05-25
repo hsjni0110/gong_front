@@ -21,7 +21,7 @@ const Option = ({ optionData, setOption, optionName }) => {
 
     <div style={{ display: "flex", flexDirection: "column" }}>
       <Label>{optionName}</Label>
-    <Dropdown selection scrolling style={{ height : "fit-content" }} placeholder='전체' search options={stateOptions} lazyLoad onChange={(data) => onChangeHandler(data)}/>
+      <Dropdown selection scrolling style={{ height : "fit-content" }} placeholder='전체' search options={stateOptions} lazyLoad onChange={(data) => onChangeHandler(data)}/>
     </div>
   )
 }

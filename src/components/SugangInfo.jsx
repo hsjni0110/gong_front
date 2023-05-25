@@ -6,7 +6,7 @@ import { Card, Grid, Statistic } from 'semantic-ui-react';
 
 
 const SugangInfo = (component) => {
-
+  console.log(component);
   return (
     <Card style={{ height: "100%", width: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
       <Statistic color='red'>

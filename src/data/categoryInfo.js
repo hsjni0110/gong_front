@@ -5,7 +5,7 @@ export let departmentInfo = [
 
 // 년도 정보
 export let yearInfo = [
-  "2022", "2021", "2020"
+  "전체", "2022", "2021", "2020"
 ]
 
 // 학년 정보
@@ -24,5 +24,5 @@ export let pointInfo = [
 ]
 
 export let semesterInfo = [
-  "1", "2"  
+  "전체", "1학기", "2학기"  
 ]
