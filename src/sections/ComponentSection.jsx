@@ -27,6 +27,7 @@ export const ComponentSection = () => {
   console.log(data);
 
   useEffect(() => {
+    
     setDisplayedData(data.slice(0, itemsPerPage))
   },[data]);
 
