@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Component from '../components/Component'
 import styled from 'styled-components';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { loadingState, subjectState } from '../state/state';
+import { loadingState, subjectState, sortBySugang, sortByLike } from '../state/state';
 import { Dimmer, Loader, Pagination, Segment } from 'semantic-ui-react';
 
 const ComponentContainer = styled.div`
@@ -12,23 +12,32 @@ const ComponentContainer = styled.div`
     margin-top : 5em;
 `
 
-
-
 export const ComponentSection = () => {
   const itemsPerPage = 10;
   const loading = useRecoilValue(loadingState);
 
   const data = useRecoilValue(subjectState);
+  const setData = useSetRecoilState(subjectState);
   const [activePage, setActivePage] = useState(1);
   const [displayedData, setDisplayedData] = useState(data.slice(0, itemsPerPage));
+
+  const sugangSort = useRecoilValue(sortBySugang);
+  const likeSort = useRecoilValue(sortByLike);
 
   console.log(data);
 
   useEffect(() => {
     setDisplayedData(data.slice(0, itemsPerPage))
-  },[data])
+  },[data]);
 
+  useEffect(() => {
+    // sortedData 만들기 (전역으로 할 필요 있나? 여기서 처리하면 되니까 상관없을듯.)
+    sugangSort ? {
+      const sortedData = data.sort(())
+    } : data;
 
+    likeSort ? {} : data;
+  }, [sugangSort, likeSort]);
 
   const handlePageChange = (event, { activePage }) => {
     setActivePage(activePage);

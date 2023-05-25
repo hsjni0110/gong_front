@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Option from './Option';
+import Modal from './ModalSection';
 import { departmentInfo, divisionInfo, gradeInfo, pointInfo, yearInfo, semesterInfo } from '../data/categoryInfo';
 import { Button, Input, Menu } from 'semantic-ui-react';
 import { Icon } from 'semantic-ui-react';
 import axios from 'axios';
-import { useSetRecoilState } from 'recoil';
-import { subjectState } from '../state/state';
-import { loadingState } from '../state/state';
-
-
+import { useSetRecoilState, useRecoilState } from 'recoil';
+import { subjectState, loadingState, modalState } from '../state/state';
 
 const Options = styled.div`
   width: auto;
@@ -20,7 +18,7 @@ const Options = styled.div`
   padding: 10px;
   padding-top :20px;
   gap: 40px;
-`
+`;
 
 
 const SearchBar = styled.div`
@@ -36,12 +34,13 @@ const SearchBar = styled.div`
 `;
 
 
-
 const Info = styled.div`
   width: 20%;
   height: 100%;
   background-color: white;
 `;
+
+
 const InputSection = () => {
 
   const [ department, setDepartment ] = useState("전체");
@@ -53,11 +52,11 @@ const InputSection = () => {
 
   const [ inputData, setInputData ] = useState("");
   const [ validCheck, setVaildCheck ] = useState(false);
-
-
+  const [ hovering, setHovering ] = useState(false);
 
   const setSubjectData = useSetRecoilState(subjectState);
   const setLoading = useSetRecoilState(loadingState);
+  const [ openModal, setModal ] = useRecoilState(modalState);
 
   const handleSearchBar = (e) => {
     e.preventDefault();
@@ -99,13 +98,14 @@ const InputSection = () => {
     }
   };
 
-    useEffect(() => {
-     setDepartment("전체");
-     setGrade("전체")
-     setDivision("전체")
-     setPoint("전체");
-    },[])
+  useEffect(() => {
+    setDepartment("전체");
+    setGrade("전체")
+    setDivision("전체")
+    setPoint("전체");
+  },[]);
 
+  const iconColor = hovering ? 'yellow' : 'blue';
 
   return (
     <div style={{ width: "100%", height: "200px", backgroundColor: "#F7F8FA", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", paddingTop: "1em", }}>
@@ -124,9 +124,13 @@ const InputSection = () => {
           <input onChange={handleSearchBar}/>
           <Button type='submit' onClick={onSubmitData}>Search</Button>
         </Input>
-       <Icon bordered inverted color='blue' name='exclamation' size='big' style={{ borderRadius: "10px"}}/> 
+       <Icon bordered inverted color={iconColor} name='exclamation' size='big' 
+       onClick={() => setModal(true)} onMouseOver={() => setHovering(true)} onMouseOut={() => setHovering(false)} 
+       style={{ borderRadius: "10px", cursor: "pointer" }}/> 
+       <Modal open={openModal} onClose={() => setModal(false)}> </Modal>
       </SearchBar>
     </div>
   )
-}
+};
+
 export default InputSection;
