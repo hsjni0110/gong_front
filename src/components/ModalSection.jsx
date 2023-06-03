@@ -84,7 +84,6 @@ function ModalSection({ open, onClose }) {
     return Math.round(dec * 100);
   };
 
-
   // 일선 추가, 
   return (
     <Modal open={open} onClose={onClose}>
@@ -95,7 +94,7 @@ function ModalSection({ open, onClose }) {
             <div>
               <div>전공</div>
               <div style={{ display: "flex", flexDirection: "row", gap:"5px" }}>
-                <Progress style={{ flex: "1" }} percent={decToPercent(jungong/juntotal)} color={decToPercent(jungong/juntotal) < 100 ? 'grey' : 'green'} />
+                <Progress style={{ flex: "1" }} percent={decToPercent(jungong/juntotal)} color={decToPercent(jungong/juntotal) < 100 ? 'grey' : 'green' } indicating progress/>
                 <Icon name='zoom-in' size='big' color={junhovering ? 'green' : 'black'} onClick={showJungong}
                 onMouseOver={() => setJunHovering(true)} onMouseOut={() => setJunHovering(false)} style = {{cursor: 'pointer'}} />
               </div>
@@ -103,7 +102,7 @@ function ModalSection({ open, onClose }) {
             <div>
               <div>교양</div>
               <div style={{ display: "flex", flexDirection: "row", gap:"5px" }}>
-                <Progress style={{ flex: "1"}} percent={decToPercent(gyoyang/gyototal)} color={decToPercent(jungong/juntotal) < 100 ? 'grey' : 'green'} />
+                <Progress style={{ flex: "1"}} percent={decToPercent(gyoyang/gyototal)} color={decToPercent(jungong/juntotal) < 100 ? 'grey' : 'green'} indicating progress/>
                 <Icon name='zoom-in' size='big' color={gyohovering ? 'green' : 'black'} onClick={showGyoyang}
                 onMouseOver={() => setGyoHovering(true)} onMouseOut={() => setGyoHovering(false)} style = {{cursor: 'pointer'}} />
               </div>
@@ -111,7 +110,7 @@ function ModalSection({ open, onClose }) {
             <div>
               <div>일선</div>
               <div style={{ display: "flex", flexDirection: "row", gap:"5px" }}>
-                <Progress style={{ flex: "1" }} percent={decToPercent(ilsun/iltotal)} color={decToPercent(jungong/juntotal) < 100 ? 'grey' : 'green'} />
+                <Progress style={{ flex: "1" }} percent={decToPercent(ilsun/iltotal)} color={decToPercent(jungong/juntotal) < 100 ? 'grey' : 'green'} indicating progress/>
                 <Icon style={{color: 'white'}} name='zoom-in' size='big' />
               </div>
             </div>
@@ -138,15 +137,15 @@ function ModalSection({ open, onClose }) {
                 <Grid rows={3}>
                   <Grid.Row style={{ display: "flex", flexDirection: "column" }}>
                     <div>전공 기초</div>
-                    <Progress percent={decToPercent(jungi/jgtotal)} color={decToPercent(jungong/juntotal) < 100 ? 'grey' : 'green'} />
+                    <Progress percent={decToPercent(jungi/jgtotal)} color={decToPercent(jungong/juntotal) < 100 ? 'grey' : 'green'} indicating progress />
                   </Grid.Row>
                   <Grid.Row style={{ display: "flex", flexDirection: "column" }}>
                     <div>전공 핵심</div>
-                    <Progress percent={decToPercent(junhak/jhtotal)} color={decToPercent(jungong/juntotal) < 100 ? 'grey' : 'green'} />
+                    <Progress percent={decToPercent(junhak/jhtotal)} color={decToPercent(jungong/juntotal) < 100 ? 'grey' : 'green'} indicating progress />
                   </Grid.Row>
                   <Grid.Row style={{ display: "flex", flexDirection: "column" }}>
                     <div>전공 심화</div>
-                    <Progress percent={decToPercent(junsim/jstotal)} color={decToPercent(jungong/juntotal) < 100 ? 'grey' : 'green'} />
+                    <Progress percent={decToPercent(junsim/jstotal)} color={decToPercent(jungong/juntotal) < 100 ? 'grey' : 'green'} indicating progress />
                   </Grid.Row>
                 </Grid>
               </Card.Content>
@@ -164,19 +163,19 @@ function ModalSection({ open, onClose }) {
                 <Grid rows={4}>
                   <Grid.Row style={{ display: "flex", flexDirection: "column" }}>
                     <div>공통 기초 교양</div>
-                    <Progress percent={decToPercent(gyogong/ggtotal)} color={decToPercent(jungong/juntotal) < 100 ? 'grey' : 'green'} />
+                    <Progress percent={decToPercent(gyogong/ggtotal)} color={decToPercent(jungong/juntotal) < 100 ? 'grey' : 'green'} indicating progress/>
                   </Grid.Row>
                   <Grid.Row style={{ display: "flex", flexDirection: "column" }}>
                     <div>교양 핵심</div>
-                    <Progress percent={decToPercent(gyohak/ghtotal)} color={decToPercent(jungong/juntotal) < 100 ? 'grey' : 'green'} />
+                    <Progress percent={decToPercent(gyohak/ghtotal)} color={decToPercent(jungong/juntotal) < 100 ? 'grey' : 'green'} indicating progress/>
                   </Grid.Row>
                   <Grid.Row style={{ display: "flex", flexDirection: "column" }}>
                     <div>교양 일반</div>  
-                    <Progress percent={decToPercent(gyoil/gitotal)} color={decToPercent(jungong/juntotal) < 100 ? 'grey' : 'green'} />
+                    <Progress percent={decToPercent(gyoil/gitotal)} color={decToPercent(jungong/juntotal) < 100 ? 'grey' : 'green'} indicating progress/>
                   </Grid.Row>
                   <Grid.Row style={{ display: "flex", flexDirection: "column" }}>
                     <div>전문 기초 교양</div>
-                    <Progress percent={decToPercent(gyojun/gjtotal)} color={decToPercent(jungong/juntotal) < 100 ? 'grey' : 'green'} />
+                    <Progress percent={decToPercent(gyojun/gjtotal)} color={decToPercent(jungong/juntotal) < 100 ? 'grey' : 'green'} indicating progress/>
                   </Grid.Row>
                 </Grid>
               </Card.Content>
@@ -187,7 +186,7 @@ function ModalSection({ open, onClose }) {
         </GridContainer>
         <div style={{ paddingRight: "10px", paddingLeft: "10px", marginTop: "10px" }}>
           <div>졸업까지</div>
-          <Progress percent={decToPercent(total/tototal)} color={decToPercent(jungong/juntotal) < 100 ? 'grey' : 'green'} />
+          <Progress percent={decToPercent(total/tototal)} color={decToPercent(jungong/juntotal) < 100 ? 'grey' : 'green'} indicating progress/>
         </div>
       </Modal.Content>
       <Modal.Actions>

@@ -34,7 +34,7 @@ export const ComponentSection = () => {
     setDisplayedData(currentArr.slice(0, itemsPerPage))
   },[currentArr])
 
-
+  console.log(data);
 
   useEffect(() => {
     let copiedArr = [...data];
