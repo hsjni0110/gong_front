@@ -77,7 +77,7 @@ function ModalSection({ open, onClose }) {
   useEffect(() => {
     setJungong(jungi+junhak+junsim);
     setGyoyang(gyogong+gyohak+gyojun+gyoil)
-    setTotal(jungong + gyoyang + iltotal)
+    setTotal(jungi+junhak+junsim+gyogong+gyohak+gyojun+gyoil)
   },[gyogong,gyohak,gyojun,gyoil,jungi,junhak,junsim]);
 
   const decToPercent = (dec) => {
