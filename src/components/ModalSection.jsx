@@ -28,7 +28,7 @@ function ModalSection({ open, onClose }) {
   const setModal = useSetRecoilState(modalState);
   const [ junhovering, setJunHovering ] = useState(false);
   const [ gyohovering, setGyoHovering ] = useState(false);
-  const [ showjun, setShowJun ] = useState(false);
+  const [ showjun, setShowJun ] = useState(true);
   const [ showgyo, setShowGyo ] = useState(false);
 
   const gyogong = useRecoilValue(gyoGong);

@@ -6,8 +6,8 @@ import { departmentInfo, divisionInfo, gradeInfo, pointInfo, yearInfo, semesterI
 import { Button, Input, Menu } from 'semantic-ui-react';
 import { Icon } from 'semantic-ui-react';
 import axios from 'axios';
-import { useSetRecoilState, useRecoilState } from 'recoil';
-import { subjectState, loadingState, modalState } from '../state/state';
+import { useSetRecoilState, useRecoilState, useRecoilValue } from 'recoil';
+import { subjectState, loadingState, modalState, searchState } from '../state/state';
 
 const Options = styled.div`
   width: auto;
@@ -57,6 +57,8 @@ const InputSection = () => {
   const setSubjectData = useSetRecoilState(subjectState);
   const setLoading = useSetRecoilState(loadingState);
   const [ openModal, setModal ] = useRecoilState(modalState);
+  const search = useRecoilValue(searchState);
+  const setSearchState = useSetRecoilState(searchState);
 
   const handleSearchBar = (e) => {
     e.preventDefault();
@@ -65,14 +67,15 @@ const InputSection = () => {
   
   // 데이터 전송
   const onSubmitData = async (e) => {
+    
+    setSearchState(true);
+
 
     if (year == "" || semester == "") {
       setVaildCheck(false);
     }
 
-    if(validCheck) {
     
-    }
 
     setLoading(true)
 
@@ -93,10 +96,17 @@ const InputSection = () => {
 
       setSubjectData(data.data);
       setLoading(false);
+
     } catch(error) {
       console.log(error);
     }
+
+    
   };
+
+  useEffect(() => {
+    setLoading(true)
+  },[search])
 
   useEffect(() => {
     setDepartment("전체");

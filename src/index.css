@@ -18,6 +18,20 @@ code {
 	src: url(./assets/font/SEBANG\ Gothic\ Bold.ttf);
 }
 
+@font-face {
+	font-family: "SEBANG Gothic OTF Bold";
+	src: url(./assets/font/SEBANG\ Gothic\ OTF\ Bold.otf);
+}
+
+@font-face {
+	font-family: "SEBANG Gothic OTF";
+	src: url(./assets/font/SEBANG\ Gothic\ OTF.otf);
+}
+@font-face {
+	font-family: "SEBANG Gothic";
+	src: url(./assets/font/SEBANG\ Gothic.ttf);
+}
+
 :root {
 	--font-sebangBold: "SEBANG_Gothic_Bold";
 }
