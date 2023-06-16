@@ -75,7 +75,7 @@ const InputSection = () => {
     setLoading(true)
 
     e.preventDefault();
-    let url = "http://"+process.env.REACT_APP_SERVER_HOST+":"+process.env.REACT_APP_SERVER_PORT+"/api/subject/subjects";
+    let url = "https://"+process.env.REACT_APP_SERVER_HOST+":"+process.env.REACT_APP_SERVER_PORT+"/api/subject/subjects";
 
     try {
       const data = await axios.post(url,{
