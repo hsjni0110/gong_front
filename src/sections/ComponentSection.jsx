@@ -75,6 +75,8 @@ export const ComponentSection = () => {
           </Dimmer>
         )
       }
+
+      
     </ComponentContainer>
   )
 }
