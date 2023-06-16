@@ -70,11 +70,6 @@ const InputSection = () => {
     
     setSearchState(true);
 
-
-    if (year == "" || semester == "") {
-      setVaildCheck(false);
-    }
-
     
 
     setLoading(true)
@@ -91,7 +86,7 @@ const InputSection = () => {
       "grade" : grade,
       "division" : division,
       "point" : point
-      })
+      }, { withCredentials: true })
  
 
       setSubjectData(data.data);
